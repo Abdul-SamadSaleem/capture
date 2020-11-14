@@ -1,5 +1,5 @@
 import { Switch, Route, useLocation } from "react-router-dom";
-
+import {AnimatePresence} from "framer-motion"
 
 const { default: AboutsUs } = require("./pages/AboutsUs");
 // Global Style
@@ -12,10 +12,16 @@ const {default: MovieDetail} = require("./pages/MovieDetail")
 
 
 const App = () => {
+
+    const location = useLocation();
+
     return (
         <div>
             <GlobalStyle />
             <Nav />
+            <AnimatePresence exitBeforeEnter> 
+
+            <Switch location={location} key={location.pathname}>
             <Route path="/" exact>
             <AboutsUs />
             </Route>
@@ -28,6 +34,9 @@ const App = () => {
             <Route path="/contact">        
             <ContactUs />
             </Route>
+            </Switch>
+            </AnimatePresence>
+
         </div>
     )
 }
