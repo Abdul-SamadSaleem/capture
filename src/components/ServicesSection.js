@@ -1,16 +1,28 @@
-import clock from "../images/clock.svg"
-import diaphragm from "../images/diaphragm.svg"
-import money from "../images/money.svg"
-import teamwork from "../images/teamwork.svg"
-import home2 from "../images/home2.png"
-
-import {About, Description, Image, Hide} from "../styles"
-import styled from "styled-components"
+import React from "react";
+//Import Icons
+import clock from "../images/clock.svg";
+import diaphragm from "../images/diaphragm.svg";
+import money from "../images/money.svg";
+import teamwork from "../images/teamwork.svg";
+import home2 from "../images/home2.png";
+//Styles
+import { About, Description, Image } from "../styles";
+import styled from "styled-components";
+import { scrollReveal } from "../animation";
+import { useScroll } from "./useScroll";
+import { useAnimation } from "framer-motion";
 
 
 const ServicesSection = () => {
-    return (
-        <Services>
+  const controls = useAnimation()
+  const [element, view] = useScroll();
+  return (
+    <Services
+      variants={scrollReveal}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
       <Description>
         <h2>
           High <span>quality</span> services
@@ -50,8 +62,9 @@ const ServicesSection = () => {
         <img alt="camera" src={home2} />
       </Image>
     </Services>
-    )
+  );
 }
+
 
 
 const Services = styled(About)`
@@ -84,4 +97,5 @@ const Card = styled.div`
   }
 `;
 
-export default ServicesSection;
+
+export default ServicesSection
