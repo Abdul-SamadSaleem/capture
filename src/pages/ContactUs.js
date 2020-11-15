@@ -5,7 +5,7 @@ import pageAnimation from "../animation"
 
 export default function ContactUs() {
     return (
-        <motion.div exit="exit" variants={pageAnimation} initial="hidden" animate="show"> 
+        <motion.div exit="exit" variants={pageAnimation} initial="hidden" animate="show" style={{background: "#fff"}}> 
             <h1>Contact Us</h1>
         </motion.div>
     )
